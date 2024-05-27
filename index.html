@@ -5,34 +5,126 @@
   <title>Web Sprint 2 Challenge</title>
   <script id="challenge">
     // 👉 CHALLENGE 1
-    function profileActivation(profile, reason) {
 
+    function profileActivation(profile, reason) {
+      if (profile.active) {
+   
+    if (!reason) {
+      return "confirm status manually";
     }
+
+    profile.active = false;
+    profile.reason = reason;
+  } else {
+ 
+    profile.active = true;
+    delete profile.reason;
+  }
+
+  
+  return profile;
+}
+
+  
+     
+  
+  
+
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
 
+      if ((x < 1 || x > 3) || (y < 1 || y > 3)) {
+      return 'invalid coordinates'
+      }
+
+      let row = y-1;
+      let col = x-1;
+
+       if (grid[row][col] === "🟥") {
+        return "🟥 💀"
+    }else if (grid[row][col] === "🟦") {
+        return "🟦 🥳";
     }
+     
+
+    }
+   
+
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
+      
+      for (let i in obj) {
+
+        let propertyName = i;
+     
+
+        let objValue = obj[i]
+        
+
+
+
+        if (propertyName.length > 9) {
+         return  "shorten all prop names to 9 chars or less"}
+          
+        if (objValue === null) 
+        {delete obj[propertyName]
+        }else if(objValue === 0){
+          obj[propertyName] = false}
+        else if (objValue === 1) {
+          obj[propertyName] = true
+      
+      }
+        
+
+      }
+      return obj
 
     }
 
     // 👉 CHALLENGE 4
-    function scrub(text, forbidden) {
+    function scrub(text, forbidden) { 
 
+    
+      for(let forbiddenIndex in forbidden){
+        let forbiddenWord=forbidden[forbiddenIndex];
+
+        let xWord='';
+        
+        for(let chr in forbiddenWord){
+          xWord+="x";
+        }
+        text=text.replaceAll(forbiddenWord,xWord);
+      }
+      return text;
     }
+
+
+
+
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
     function normalizePhoneNumber(num) {
+       
+      const areaCode = num.slice(0, 3);
+    const centralOfficeCode = num.slice(3, 6);
+    const stationCode = num.slice(6);
 
-    }
+    // Format the phone number
+    const formattedPhoneNumber = `(${areaCode}) ${centralOfficeCode}-${stationCode}`;
+    
+    return formattedPhoneNumber;
+}
+    
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
     function diceRolls() {
+         }
+        
+       
+    
 
-    }
 
     // 🧪 DO NOT make any changes below this line ===================
     globalThis.challengeVersion = 1
